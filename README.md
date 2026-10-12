@@ -149,7 +149,7 @@ Run `npm run dev -- --host`, then open the `Network:` URL on a phone connected t
 
 ## Install on iPhone (the demo)
 
-1. Open the live link (the Vercel URL, see Deployment below) in **Safari**.
+1. Open the live link (`https://amritanbk-2407.github.io/hearth/`) in **Safari**.
 2. Tap **Share** → **Add to Home Screen** → **Add**.
 3. Open **Hearth** from the home screen. It runs full-screen like a native app and works offline.
 
@@ -157,9 +157,10 @@ On Android: open in Chrome → ⋮ menu → **Install app**.
 
 ## Deployment
 
-- **CI:** every push and pull request runs `.github/workflows/ci.yml` on GitHub Actions (tests + build).
-- **CD:** the app is hosted on **Vercel**, connected to this repository. Every push to `main`
-  is built and published automatically (build command `npm run build`, output folder `dist`).
+Every push to `main` runs `.github/workflows/deploy.yml`, which tests, builds and publishes the
+app to the `gh-pages` branch. GitHub Pages serves that branch at https://amritanbk-2407.github.io/hearth/
+(repo Settings → Pages → Deploy from a branch → `gh-pages` / `(root)`). The repository must be public
+for Pages to work on a free account.
 
 ## Future scope
 
