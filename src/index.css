@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-[#e9e7f3] font-sans text-ink antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* Desktop / laptop: show the app inside a phone frame for demos */
+.phone-frame {
+  @apply relative mx-auto flex h-full w-full max-w-[440px] flex-col overflow-hidden bg-canvas;
+}
+@media (min-width: 640px) {
+  body {
+    background:
+      radial-gradient(circle at 15% 20%, #ece6ff 0, transparent 40%),
+      radial-gradient(circle at 85% 80%, #dff5ec 0, transparent 40%),
+      #eeedf6;
+  }
+  .phone-frame {
+    height: min(920px, calc(100% - 48px));
+    margin-top: 24px;
+    border-radius: 44px;
+    border: 10px solid #1f2340;
+    box-shadow: 0 30px 80px rgba(31, 35, 64, 0.25);
+  }
+}
+
+.safe-top {
+  padding-top: max(env(safe-area-inset-top), 0px);
+}
+.safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 8px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl border border-white/70 bg-white shadow-card;
+  }
+  .input {
+    @apply w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-[15px] text-ink outline-none transition placeholder:text-ink-mute focus:border-brand-400 focus:bg-white focus:ring-4 focus:ring-brand-100;
+  }
+  .label {
+    @apply mb-1.5 block text-[13px] font-semibold text-ink-soft;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+}
+
+/* Printing reports: hide app chrome */
+@media print {
+  body {
+    background: white !important;
+  }
+  .phone-frame {
+    max-width: none !important;
+    height: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-scroll {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
